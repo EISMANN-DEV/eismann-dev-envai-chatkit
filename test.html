@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <button onclick="testEndpoint()">Test Endpoint</button>
+  <pre id="result"></pre>
+  
+  <script>
+    async function testEndpoint() {
+      const res = await fetch('http://localhost:3000/api/chatkit/session', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ userId: 'test' })
+      });
+      const data = await res.json();
+      document.getElementById('result').textContent = JSON.stringify(data, null, 2);
+    }
+  </script>
+</body>
+</html>
